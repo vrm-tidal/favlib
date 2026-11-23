@@ -1,0 +1,4 @@
+{
+	"extends": "luna/tsconfig.json",
+	"include": ["src"]
+}

@@ -1,0 +1,17 @@
+{
+	"name": "@marekvonrogall/favlib",
+	"description": "TIDAL API wrapper for fetching monthly listening statistics.",
+	"author": {
+		"name": "marekvonrogall",
+		"url": "https://github.com/marekvonrogall/"
+	},
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.6.8",
+		"@types/node": "^24.10.1",
+		"luna": "github:Inrixia/TidaLuna"
+	}
+}
