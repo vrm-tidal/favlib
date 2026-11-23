@@ -135,3 +135,21 @@ export const getAllMonthlyTopArtists =
 		);
 		return { timeline, months };
 	};
+
+export const getAllTimeMonthlyTopArtists = async (
+	timeline?: Month[],
+): Promise<StreamedArtist[]> => {
+	const months = timeline ?? (await getTimeline());
+	const results = await Promise.all(
+		months.map(({ year, month }) => getMonthlyTopArtists(year, month)),
+	);
+	const totals = new Map<string, StreamedArtist>();
+	for (const { artists } of results) {
+		for (const { artist, streams } of artists) {
+			const total = totals.get(artist.id);
+			if (total) total.streams += streams;
+			else totals.set(artist.id, { artist, streams });
+		}
+	}
+	return [...totals.values()].sort((a, b) => b.streams - a.streams);
+};

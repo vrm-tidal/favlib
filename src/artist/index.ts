@@ -5,6 +5,7 @@ export {
 	type Banners,
 	type Disclaimer,
 	getAllMonthlyTopArtists,
+	getAllTimeMonthlyTopArtists,
 	getMonthlyTopArtists,
 	getTimeline,
 	type Month,
