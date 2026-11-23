@@ -11,4 +11,5 @@ export {
 	type Month,
 	type MonthlyTopArtists,
 	type StreamedArtist,
+	sumMonthlyTopArtists,
 } from "./stats";
