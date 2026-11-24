@@ -2,10 +2,18 @@ import { TidalApi } from "@luna/lib";
 
 export const API_V2 = "https://api.tidal.com/v2";
 
+const clientVersion = () => {
+	const now = new Date();
+	return `${now.getFullYear()}.${now.getMonth() + 1}.${now.getDate()}`;
+};
+
 export const request = async (url: string) => {
 	const res = await fetch(url, {
 		cache: "no-store",
-		headers: await TidalApi.getAuthHeaders(),
+		headers: {
+			...(await TidalApi.getAuthHeaders()),
+			"x-tidal-client-version": clientVersion(),
+		},
 	});
 	if (!res.ok) throw new Error(`${res.status} ${res.statusText} (${url})`);
 	return res;
